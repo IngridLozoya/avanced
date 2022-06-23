@@ -11,6 +11,28 @@ class AppRoutes{
     MenuOption('extra1', Icons.abc_rounded, 'Extra 1', const Extra1Screen()),
     MenuOption('extra2', Icons.abc_rounded, 'Extra 2', const Extra2Screen()),
     MenuOption('list2', Icons.abc_rounded, 'Listview 2', const ListView2Screen()),
-    MenuOption('list1', Icons.abc_rounded, 'Listview', const ListViewScreen())
+    MenuOption('list1', Icons.abc_rounded, 'Listview', const ListViewScreen()),
   ];
+
+  static Map<String,Widget Function(BuildContext)> getAppRoutes(){
+    Map<String,Widget Function(BuildContext)> appRoutes = {};
+
+    appRoutes.addAll({
+      'home': (BuildContext context) => HomeScreen()
+  });
+
+    for(final option in menuOptions){
+      appRoutes.addAll({
+        option.route:(BuildContext context) => option.screen
+      });
+    }
+
+    return appRoutes;
+  }
+
+  static Route<dynamic> onGenerateRoutes(RouteSettings settings){
+    return MaterialPageRoute(
+      builder: (context) => const AlertScreen()
+      );
+  }
 }

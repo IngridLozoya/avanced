@@ -1,3 +1,4 @@
+import 'package:avanced/router/app_routes.dart';
 import 'package:avanced/screens/alert_screen.dart';
 import 'package:avanced/screens/card_screen.dart';
 import 'package:avanced/screens/extrascreen1.dart';
@@ -16,16 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'Home',
-      routes: {
-        'Home':(BuildContext context) => const HomeScreen(),
-        'Card':(BuildContext context) => const CardScreen(),
-        'Alert':(BuildContext context) => const AlertScreen(),
-        'Animation':(BuildContext context) => const HomeScreen(),
-        'Listview':(BuildContext context) => const ListView2Screen(),
-        'Extra1': (BuildContext context) => const Extra1Screen(),
-        'Extra2': (BuildContext context) => const Extra2Screen()
-      },
+      initialRoute: AppRoutes.initialRoute,
+      routes: AppRoutes.getAppRoutes(),
+      onGenerateRoute: AppRoutes.onGenerateRoutes,
       //home: ListView2Screen()
     );
   }

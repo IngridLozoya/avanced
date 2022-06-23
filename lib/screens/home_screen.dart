@@ -1,26 +1,25 @@
+import 'package:avanced/router/app_routes.dart';
 import 'package:flutter/material.dart';
-
-import 'listview_Screen_2.dart';
-
 class HomeScreen extends StatelessWidget {
    
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+  final MenuOption =AppRoutes.menuOptions;
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.separated(
         itemBuilder: (context, index) => ListTile(
-          leading: const Icon(Icons.access_alarm_outlined),
-          title: const Text('Routes name'),
+          leading: Icon(MenuOption[index].icon),
+          title: Text(MenuOption[index].name),
           onTap: (){
             //final route = MaterialPageRoute(builder: (context) => const ListView2Screen());
             //Navigator.pushReplacement(context, route);
-            Navigator.pushNamed(context, 'Card');
+            Navigator.pushNamed(context, MenuOption[index].route);
           },
         ), 
         separatorBuilder: (context, index) => const Divider(), 
-        itemCount: 10
+        itemCount: MenuOption.length
         )
     );
   }

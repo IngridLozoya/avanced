@@ -10,6 +10,6 @@ class MenuOption{
    this.route, 
    this.icon, 
    this.name, 
-   this.screen
+  this.screen
   );
 }
